@@ -10,8 +10,8 @@ public:
 	//void getModule();
 
 	// Variables
-	static HANDLE hPipe;
-	static wchar_t *pipeName;
+	HANDLE hPipe;
+	wchar_t *pipeName;
 	DWORD lastPacketSize;
 	DWORD baseAddress;
 };

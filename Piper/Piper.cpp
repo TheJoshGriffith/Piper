@@ -2,9 +2,9 @@
 //
 
 #include "stdafx.h"
+#include "Piper.h"
 #include <Windows.h>
 #include <Psapi.h>
-#include "Piper.h"
 #include <stdlib.h>
 
 #define BUFFER_SIZE 512
@@ -29,7 +29,7 @@ Piper::Piper()
 	Send(L"SYSTEM OPERATIONAL");
 	// Sent the base address for good measure
 	wchar_t *buff = new wchar_t[32];
-	_itow(baseAddress, buff, NULL);
+	_itow_s(baseAddress, buff, sizeof(buff), 16);
 	Send(buff);
 	delete buff;
 }
