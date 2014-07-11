@@ -44,14 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pipe.cs">
+    <Compile Include="Pipee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pipe.Designer.cs">
-      <DependentUpon>Pipe.cs</DependentUpon>
+    <Compile Include="Pipee.Designer.cs">
+      <DependentUpon>Pipee.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Pipee.resx">
+      <DependentUpon>Pipee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

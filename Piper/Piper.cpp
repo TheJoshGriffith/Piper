@@ -15,7 +15,7 @@ Piper::Piper()
 	baseAddress = (DWORD) GetModuleHandle(0);
 	//getModule();
 	// Define a pipe name
-	pipeName = L"\\\\.\\pipe\\pipeName";
+	pipeName = L"\\\\.\\pipe\\piperpipe";
 	// Create the pipe
 	hPipe = CreateNamedPipe(pipeName, PIPE_ACCESS_DUPLEX, PIPE_TYPE_MESSAGE, 1, BUFFER_SIZE, BUFFER_SIZE, 5000, NULL);
 	// If we didn't make it, tell the user something went wrong.
