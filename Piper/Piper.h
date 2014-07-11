@@ -7,7 +7,7 @@ public:
 	Piper();
 	~Piper();
 	void Send(wchar_t * msg);
-	void getModule();
+	//void getModule();
 
 	// Variables
 	static HANDLE hPipe;

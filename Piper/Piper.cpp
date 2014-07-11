@@ -5,13 +5,15 @@
 #include <Windows.h>
 #include <Psapi.h>
 #include "Piper.h"
+#include <stdlib.h>
 
 #define BUFFER_SIZE 512
 
 Piper::Piper()
 {
 	// Get tibias main module for future use
-	getModule();
+	baseAddress = (DWORD) GetModuleHandle(0);
+	//getModule();
 	// Define a pipe name
 	pipeName = L"\\\\.\\pipe\\pipeName";
 	// Create the pipe
@@ -25,6 +27,11 @@ Piper::Piper()
 	ConnectNamedPipe(hPipe, NULL);
 	// Send a message down the pipe to confirm it's working
 	Send(L"SYSTEM OPERATIONAL");
+	// Sent the base address for good measure
+	wchar_t *buff = new wchar_t[32];
+	_itow(baseAddress, buff, NULL);
+	Send(buff);
+	delete buff;
 }
 
 Piper::~Piper()
@@ -38,7 +45,7 @@ void Piper::Send(wchar_t * msg)
 	WriteFile(hPipe, msg, sizeof(msg), &lastPacketSize, NULL);
 }
 
-void Piper::getModule()
+/*void Piper::getModule()
 {
 	DWORD cbNeeded;
 	HANDLE pHandle = GetCurrentProcess();
@@ -48,4 +55,4 @@ void Piper::getModule()
 	{
 		baseAddress = (DWORD) hMods[0];
 	}
-}
+}*/
