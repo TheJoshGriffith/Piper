@@ -6,7 +6,7 @@ public:
 	// Methods
 	Piper();
 	~Piper();
-	void Send(wchar_t * msg);
+	void Send(char * msg);
 	//void getModule();
 
 	// Variables

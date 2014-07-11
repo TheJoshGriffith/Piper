@@ -26,10 +26,10 @@ Piper::Piper()
 	// Wait for a client to connect to see the data down the pipe.
 	ConnectNamedPipe(hPipe, NULL);
 	// Send a message down the pipe to confirm it's working
-	Send(L"QSYSTEM OPERATIONAL");
+	Send("QSYSTEM OPERATIONAL");
 	// Sent the base address for good measure
-	wchar_t *buff = new wchar_t[32];
-	_itow_s(baseAddress, buff, wcslen(buff), 16);
+	char *buff = new char[32];
+	_itoa_s(baseAddress, buff, sizeof(buff), 16);
 	Send(buff);
 }
 
@@ -39,13 +39,12 @@ Piper::~Piper()
 	CloseHandle(hPipe);
 }
 
-void Piper::Send(wchar_t *msg)
+void Piper::Send(char *msg)
 {
-	MessageBox(NULL, msg, L"Shit", MB_ICONSTOP);
-	WriteFile(hPipe, msg, wcslen(msg), &lastPacketSize, NULL);
-	wchar_t *buff = new wchar_t[32];
-	_itow_s(lastPacketSize, buff, wcslen(buff), 16);
-	MessageBox(NULL, buff, buff, MB_ICONSTOP);
+	WriteFile(hPipe, msg, sizeof(msg), &lastPacketSize, NULL);
+	char *buff = new char[32];
+	_itoa_s(lastPacketSize, buff, sizeof(buff), 16);
+	MessageBoxA(NULL, buff, buff, MB_ICONSTOP);
 }
 
 /*void Piper::getModule()

@@ -26,14 +26,20 @@ namespace WindowsFormsApplication1
             listenerThread = new Thread(new ThreadStart(addToList));
             npcs = new NamedPipeClientStream("piperpipe");
             npcs.Connect();
+            npcs.ReadMode = PipeTransmissionMode.Message;
             listenerThread.Start();
         }
 
         public void addToList()
         {
-            byte[] buff = new byte[512];
-            npcs.Read(buff, 0, 512);
-            listBox1.Items.Add(Encoding.ASCII.GetString(buff));
+            while (true)
+            {
+                byte[] buff = new byte[32];
+                npcs.Read(buff, 0, 32);
+                listBox1.Invoke((MethodInvoker)delegate {
+                    listBox1.Items.Add(Encoding.Default.GetString(buff).Split('\0')[0]);
+                });
+            }
         }
     }
 }
