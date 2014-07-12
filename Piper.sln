@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Piper", "Piper\Piper.vcxproj", "{7A83A37A-8CBE-4D71-9952-0711E80D081F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pipee", "WindowsFormsApplication1\Pipee.csproj", "{7C30B510-2B05-4A8D-92C1-EEA54D9769C9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipeeWPF", "PipeeWPF\PipeeWPF.csproj", "{50FA3CA1-94EE-40C4-8625-6D1E79603019}"
 EndProject
 Global
@@ -29,16 +27,6 @@ Global
 		{7A83A37A-8CBE-4D71-9952-0711E80D081F}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{7A83A37A-8CBE-4D71-9952-0711E80D081F}.Release|Win32.ActiveCfg = Release|Win32
 		{7A83A37A-8CBE-4D71-9952-0711E80D081F}.Release|Win32.Build.0 = Release|Win32
-		{7C30B510-2B05-4A8D-92C1-EEA54D9769C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C30B510-2B05-4A8D-92C1-EEA54D9769C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C30B510-2B05-4A8D-92C1-EEA54D9769C9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{7C30B510-2B05-4A8D-92C1-EEA54D9769C9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{7C30B510-2B05-4A8D-92C1-EEA54D9769C9}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{7C30B510-2B05-4A8D-92C1-EEA54D9769C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C30B510-2B05-4A8D-92C1-EEA54D9769C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C30B510-2B05-4A8D-92C1-EEA54D9769C9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{7C30B510-2B05-4A8D-92C1-EEA54D9769C9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{7C30B510-2B05-4A8D-92C1-EEA54D9769C9}.Release|Win32.ActiveCfg = Release|Any CPU
 		{50FA3CA1-94EE-40C4-8625-6D1E79603019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{50FA3CA1-94EE-40C4-8625-6D1E79603019}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50FA3CA1-94EE-40C4-8625-6D1E79603019}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

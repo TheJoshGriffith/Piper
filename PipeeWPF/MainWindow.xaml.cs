@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using System.IO.Pipes;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace PipeeWPF
 {
@@ -20,9 +24,34 @@ namespace PipeeWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        NamedPipeClientStream npcs;
+        Thread listenerThread;
         public MainWindow()
         {
             InitializeComponent();
+
+            listenerThread = new Thread(new ThreadStart(addToList));
+            npcs = new NamedPipeClientStream("piperpipe");
+            npcs.Connect();
+            npcs.ReadMode = PipeTransmissionMode.Message;
+            listenerThread.Start();
+        }
+
+        public void addToList()
+        {
+            while (true)
+            {
+                byte[] buff = new byte[32];
+                npcs.Read(buff, 0, 32);
+                string text = Encoding.Default.GetString(buff).Split('\0')[0];
+                if (text != "")
+                {
+                    lbMessages.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+                    {
+                        lbMessages.Items.Add(Encoding.Default.GetString(buff).Split('\0')[0]);
+                    }));
+                }
+            }
         }
     }
 }

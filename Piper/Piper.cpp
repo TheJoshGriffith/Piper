@@ -44,7 +44,8 @@ void Piper::Send(char *msg)
 	WriteFile(hPipe, msg, strlen(msg), &lastPacketSize, NULL);
 	char *buff = new char[32];
 	_itoa_s(lastPacketSize, buff, strlen(buff), 16);
-	MessageBoxA(NULL, buff, buff, MB_ICONSTOP);
+	// Debug Messagebox
+	// MessageBoxA(NULL, buff, buff, MB_ICONSTOP);
 }
 
 /*void Piper::getModule()
