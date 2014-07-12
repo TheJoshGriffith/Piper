@@ -31,6 +31,10 @@ namespace PipeeWPF
         {
             InitializeComponent();
 
+            DllInjector dllinj = new DllInjector();
+
+            dllinj.Inject("Tibia.exe", "Piper.dll");
+
             listenerThread = new Thread(new ThreadStart(addToList));
             startupThread = new Thread(new ThreadStart(initNpcs));
             startupThread.Start();
