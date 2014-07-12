@@ -79,7 +79,7 @@ namespace PipeeWPF
 
         private bool InjectDLL(int processId)
         {
-            string DLL_PATH = "C:\\Users\\Joshua\\Documents\\visual studio 2013\\Projects\\Piper\\PipeeWPF\\bin\\Debug\\Piper.dll";
+            string DLL_PATH = AppDomain.CurrentDomain.BaseDirectory + "\\Piper.dll";
             uint DLL_PATH_LENGTH = (uint)DLL_PATH.Length;
             IntPtr kernel = WinAPI.GetModuleHandle("Kernel32");
             IntPtr loadLibrary = WinAPI.GetProcAddress(kernel, "LoadLibraryA");
