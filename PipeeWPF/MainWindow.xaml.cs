@@ -26,11 +26,18 @@ namespace PipeeWPF
     {
         NamedPipeClientStream npcs;
         Thread listenerThread;
+        Thread startupThread;
         public MainWindow()
         {
             InitializeComponent();
 
             listenerThread = new Thread(new ThreadStart(addToList));
+            startupThread = new Thread(new ThreadStart(initNpcs));
+            startupThread.Start();
+        }
+
+        public void initNpcs()
+        {
             npcs = new NamedPipeClientStream("piperpipe");
             npcs.Connect();
             npcs.ReadMode = PipeTransmissionMode.Message;
@@ -52,6 +59,11 @@ namespace PipeeWPF
                     }));
                 }
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            listenerThread.Abort();
         }
     }
 }

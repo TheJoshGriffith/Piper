@@ -13,7 +13,6 @@ Piper::Piper()
 {
 	// Get tibias main module for future use
 	baseAddress = (DWORD) GetModuleHandle(0);
-	//getModule();
 	// Define a pipe name
 	pipeName = L"\\\\.\\pipe\\piperpipe";
 	// Create the pipe
@@ -31,6 +30,11 @@ Piper::Piper()
 	char *buff = new char[32];
 	_itoa_s(baseAddress, buff, strlen(buff), 16);
 	Send(buff);
+	for (int i = 0; i < 10; i++)
+	{
+		Send("Testing");
+		Sleep(1000);
+	}
 }
 
 Piper::~Piper()
@@ -47,15 +51,3 @@ void Piper::Send(char *msg)
 	// Debug Messagebox
 	// MessageBoxA(NULL, buff, buff, MB_ICONSTOP);
 }
-
-/*void Piper::getModule()
-{
-	DWORD cbNeeded;
-	HANDLE pHandle = GetCurrentProcess();
-	HMODULE hMods[1024];
-	// Currently the first enumerated module will always be Tibia_exe.
-	if (EnumProcessModules(pHandle, hMods, sizeof(hMods), &cbNeeded))
-	{
-		baseAddress = (DWORD) hMods[0];
-	}
-}*/
