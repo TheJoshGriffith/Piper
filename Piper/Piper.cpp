@@ -26,7 +26,7 @@ Piper::Piper()
 	ConnectNamedPipe(hPipe, NULL);
 	// Send a message down the pipe to confirm it's working
 	Send("SYSTEM OPERATIONAL");
-	// Sent the base address for good measure
+	// Send the base address for good measure
 	char *buff = new char[32];
 	_itoa_s(baseAddress, buff, strlen(buff), 16);
 	Send(buff);
